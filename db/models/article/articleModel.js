@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 //文章表
 let articleSchema = new mongoose.Schema({
-  article_id : { type:Number, required: true },//文章id
+  article_id : { type:Number, required: true,ref: "articleAndTagSchema" },//文章id
   article_title  : { type:String, default:"我是文章标题" },//文章标题
   article_about  : { type:String, default:"我是文章概要" },//文章标题
   article_content  : { type:String, default:"我是文章内容" },//文章内容
@@ -13,14 +13,15 @@ let articleSchema = new mongoose.Schema({
 
 //文章标签关联表
 let articleAndTagSchema = new mongoose.Schema({
+  articleAndTag_id: {type:Number, required: true},
   article_id : { type:Number, required: true },//文章id
-  tag_id  : { type:Number, required: true },//标签id
+  tag_id  : { type:Number, required: true,ref:"tagSchema" },//标签id
+  tag_name  : { type:String,  default:"我是标签标名字" },//标签名字
 });
 // 标签表
 let tagSchema = new mongoose.Schema({
   tag_id : { type:Number, required: true },//标签id
   tag_name  : { type:String,  default:"我是标签标名字" },//标签名字
- 
 });
 
 

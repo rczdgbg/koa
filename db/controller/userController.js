@@ -40,7 +40,7 @@ exports.userSignIn = async (ctx)=>{
   if(loginUser.length){
     let token = makeToken(ctx.query);
     // 更新用户token
-    await userModel.update(ctx.query, {
+    await userModel.updateOne(ctx.query, {
       $set: {
           token: token
       }

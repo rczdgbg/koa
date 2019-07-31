@@ -7,24 +7,24 @@
 var app = require('../app');
 var debug = require('debug')('demo:server');
 var http = require('http');
-
+let os = require('os');
 /**
  * Get port from environment and store in Express.
  */
-
+console.log(process.env.PORT)
 var port = normalizePort(process.env.PORT || '3000');
 // app.set('port', port);
 
 /**
  * Create HTTP server.
  */
-
+console.log(app.callback())
 var server = http.createServer(app.callback());
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+console.log(`Server running at ${port}/`);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -61,7 +61,7 @@ function onError(error) {
   var bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
-
+  console.log("error", err)
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
@@ -86,5 +86,6 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+    
   debug('Listening on ' + bind);
 }
